@@ -20,8 +20,12 @@ userSchema.set('toJSON', {
     }
   });
 
-  userSchema.methods.comparePassword = function(tryPassword, cb) {
-  bcrypt.compare(tryPassword, this.password, cb);
+userSchema.methods.comparePassword = function(tryPassword, cb) {
+  // 'this' represents the document that you called comparePassword on
+  bcrypt.compare(tryPassword, this.password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
 };
 
 userSchema.pre('save', function(next) {
