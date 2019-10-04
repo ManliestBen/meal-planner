@@ -5,10 +5,11 @@ import logo from './logo.svg';
 import './App.css';
 import { read } from 'fs';
 import DayView from '../src/pages/DayView/DayView';
-import Login from '../src/pages/Login/Login';
+import LoginPage from '../src/pages/LoginPage/LoginPage';
 import RecipeSearch from '../src/pages/RecipeSearch/RecipeSearch';
 import ShoppingList from '../src/pages/ShoppingList/ShoppingList';
 import WeekView from '../src/pages/WeekView/WeekView';
+import SignupPage from './pages/SignupPage/SignupPage';
 
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
           <a href='/recipesearch'>Recipe Search</a> &nbsp;&nbsp;&nbsp;
           <a href='/shoppinglist'>Shopping List</a> &nbsp;&nbsp;&nbsp;
           <a href='/login'>Login</a> &nbsp;&nbsp;&nbsp;
+          <a href='/signup'>Sign Up</a> &nbsp;&nbsp;&nbsp;
         </nav>
         </header>
         <Switch>
@@ -34,7 +36,12 @@ class App extends Component {
             <DayView />
           }/>
           <Route path='/login' render={() =>
-            <Login />
+            <LoginPage />
+          }/>
+          <Route path='/signup' render={({history}) =>
+            <SignupPage
+              history={history}
+            />
           }/>
           <Route path='/recipesearch' render={() =>
             <RecipeSearch />
