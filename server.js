@@ -20,6 +20,11 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/edamam', edamamRouter);
 app.use('/api/users', require('./routes/api/users'));
 
+// PROTECTED ROUTES GO BENEATH 
+//(as well as putting them in routes/api/XXXX.js)
+// in the format router.use(require(../../config/auth'))
+app.use(require('./config/auth'));
+
 
 // Catch all route
 app.get('/*', function(req, res) {

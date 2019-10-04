@@ -11,7 +11,10 @@ class LoginPage extends Component {
   };
 
   handleChange = (e) => {
-    // TODO: implement in an elegant way
+    this.setState({
+      // Using ES2015 Computed Property Names
+      [e.target.name]: e.target.value
+    });
   }
 
   handleSubmit = async (e) => {
@@ -23,7 +26,7 @@ class LoginPage extends Component {
       this.props.history.push('/');
     } catch (err) {
       // Invalid user data (probably duplicate email)
-      this.props.updateMessage(err.message);
+      alert('Invalid Credentials!')
     }
   }
 
