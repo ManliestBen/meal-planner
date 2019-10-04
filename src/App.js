@@ -11,6 +11,7 @@ import ShoppingList from '../src/pages/ShoppingList/ShoppingList';
 import WeekView from '../src/pages/WeekView/WeekView';
 import SignupPage from './pages/SignupPage/SignupPage';
 import userService from '../src/utils/userService';
+import NavBar from '../src/components/NavBar/NavBar';
 
 
 class App extends Component {
@@ -20,29 +21,45 @@ class App extends Component {
     
   }
   
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
+
+  handleSignupOrLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-        <nav>
+        <NavBar 
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
+        {/* <nav>
           <a href='/dayview'>Day View</a> &nbsp;&nbsp;&nbsp;
           <a href='/weekview'>Week View</a> &nbsp;&nbsp;&nbsp;
           <a href='/recipesearch'>Recipe Search</a> &nbsp;&nbsp;&nbsp;
           <a href='/shoppinglist'>Shopping List</a> &nbsp;&nbsp;&nbsp;
           <a href='/login'>Login</a> &nbsp;&nbsp;&nbsp;
           <a href='/signup'>Sign Up</a> &nbsp;&nbsp;&nbsp;
-        </nav>
+        </nav> */}
         </header>
         <Switch>
           <Route path='/dayview' render={() =>
             <DayView />
           }/>
-          <Route path='/login' render={() =>
-            <LoginPage />
+          <Route path='/login' render={({history}) =>
+            <LoginPage
+              history={history}
+            />
           }/>
           <Route path='/signup' render={({history}) =>
             <SignupPage
               history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
           <Route path='/recipesearch' render={() =>
