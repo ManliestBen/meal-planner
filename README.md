@@ -1,69 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Meal Planner App
+## 
+## 
+## Objective:  
+### - Create an app that allows a user to plan meals out for a week.
+## 
+## 
+## 
+## The app can be found [here](https://deployedproject.com)
+## 
+## 
+## Motivation:
+### I've used several meal planning apps, but each of the ones I've used is missing one key piece of functionality that I'm looking for.  Some of them have great recipe search engines, but don't allow a user to save meals, some of them allow a user to set meals for each day, but only allow custom recipes, and some don't allow a place to view nutritional information.  My motivation for this project is to design an app that takes the best elements of apps I've used in the past and combine them into one that I'll WANT to use on a weekly basis.
+## 
+## 
+## Prototype View:
+### Here is my ERD for the data to be stored in my database:
+![ERD diagram](public/images/meal-planner-ERD.png)
+### Here are each of the pages I would like to display:
+## Login Page
+![Login Page](public/images/login.png)
+## Week View
+![Week View](public/images/weekview.png)
+## Day View
+![Day View](public/images/dayview.png)
+## Recipe Search
+![Recipe Search](public/images/recipe-search.png)
+## Recipe Detail
+![Recipe Detail](public/images/recipe-detail.png)
+## 
+## 
+## 
+## Technology Implemented:
+- JavaScript
+- CSS
+- HTML
+- Git
+- Express
+- MongoDB
+- Node.js
+- Heroku
+- React
+- JWT
 
-## Available Scripts
+## API
+### All recipes and nutritional information are being pulled using the [Edamam](https://www.edamam.com) API. 
 
-In the project directory, you can run:
+## Minimum Viable Product:
+- AAU, I should be able to sign up by providing a name, email, and password.
+- AAU, I should be able to log in, using the email and password used to sign up.
+- AAU, I should be able to view a week of upcoming meals by day.
+- AAU, I should be able to search for recipes.
+- AAU, I should be able to add a meal to a specified day of the week.
+- AAU, I should be able to view a separate page for each day of week, detailing the meals I've selected for the specified day.
+- AAU, I should be able to view a meal's recipe by clicking on a link.
+## Stretch Goals:
+- AAU, I should be able to print a weekly shopping list generated from each of the meals scheduled for that week.
+- AAU, I should be able to change the nutritional parameters of the recipe search to account for allergies/dietary restrictions.
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# meal-planner
