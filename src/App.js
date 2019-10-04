@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Link, NavLink } from 'react-router-dom';
+import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import * as edamamAPI from '../src/services/edamam-api';
 import logo from './logo.svg';
 import './App.css';
 import { read } from 'fs';
+import DayView from '../src/pages/DayView/DayView';
+import Login from '../src/pages/Login/Login';
+import RecipeSearch from '../src/pages/RecipeSearch/RecipeSearch';
+import ShoppingList from '../src/pages/ShoppingList/ShoppingList';
+import WeekView from '../src/pages/WeekView/WeekView';
 
 
 class App extends Component {
@@ -17,18 +22,32 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         <nav>
-          <a href=''>Taco</a> &nbsp;&nbsp;&nbsp;
-          <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          >
-          Learn React
-          </a>
+          <a href='/dayview'>Day View</a> &nbsp;&nbsp;&nbsp;
+          <a href='/weekview'>Week View</a> &nbsp;&nbsp;&nbsp;
+          <a href='/recipesearch'>Recipe Search</a> &nbsp;&nbsp;&nbsp;
+          <a href='/shoppinglist'>Shopping List</a> &nbsp;&nbsp;&nbsp;
+          <a href='/login'>Login</a> &nbsp;&nbsp;&nbsp;
         </nav>
-        
         </header>
+        <Switch>
+          <Route path='/dayview' render={() =>
+            <DayView />
+          }/>
+          <Route path='/login' render={() =>
+            <Login />
+          }/>
+          <Route path='/recipesearch' render={() =>
+            <RecipeSearch />
+          }/>
+          <Route path='/weekview' render={() =>
+            <WeekView />
+          }/>
+          <Route path='/shoppinglist' render={() =>
+            <ShoppingList />
+          }/>
+        </Switch>
+        
+        
       </div>
   );
   }
