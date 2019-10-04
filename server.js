@@ -17,7 +17,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 // api route for Edamam
-app.use('/api/edamam/', edamamRouter);
+app.use('/api/edamam', edamamRouter);
+app.use('/api/users', require('./routes/api/users'));
 
 
 // Catch all route
