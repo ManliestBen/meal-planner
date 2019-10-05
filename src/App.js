@@ -16,7 +16,14 @@ import NavBar from '../src/components/NavBar/NavBar';
 
 class App extends Component {
   state = {
-    recipeSearch: [],
+    recipeSearch: [
+      { q: 'Taco',
+        from: 0,
+        to: 10},
+      { q: 'Booze',
+        from: 6,
+        to: 52}
+    ],
     user: userService.getUser()
     
   }
@@ -66,8 +73,11 @@ class App extends Component {
           <Route path='/recipesearch' render={() =>
             <RecipeSearch />
           }/>
-          <Route path='/weekview' render={() =>
-            <WeekView />
+          <Route path='/weekview' render={(props) =>
+            <WeekView
+              recipeSearch={this.state.recipeSearch}
+              {...props}
+            />
           }/>
           <Route path='/shoppinglist' render={() =>
             <ShoppingList />
