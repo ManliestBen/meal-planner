@@ -1,5 +1,5 @@
 const BASE_URL = 'api/edamam';
-const API_URL = 'https://api.edamam.com/search?q=chicken&app_id=03a351a6&app_key=130225b099dc5dbed0c31d68e794955b'
+const API_URL = process.env.TESTURL;
 
 export function getRecipe() {
     const apiUrl = API_URL;
