@@ -10,17 +10,19 @@ function WeekView (props) {
         <div>Week View
           {props.apiInfo.map((item, idx) =>
             <div>
-                <img src={item.recipe.image}></img>
-              <Link 
-                key={idx}
-                to={`/recipe/${idx}`}
+                <img src={item.recipe.image}></img><br></br>
+              <a 
+                key={item.recipe.label}
+                href={item.recipe.url}
+                target="_blank"
               >
-                <div>
-                  Name: {item.recipe.label}<br></br>
-                  
-                </div>
-              </Link>
-              Calories: {item.recipe.calories}
+                {item.recipe.label}<br></br>
+              </a>
+             Recipe From: {item.recipe.source}<br></br>
+             Total Time: {item.recipe.totalTime} minutes<br></br>
+             Yield: {Math.round(item.recipe.yield)} Servings <br></br>
+             Calories: {Math.round((item.recipe.calories/item.recipe.yield))}<br></br>
+
             </div>
           )}
         </div>

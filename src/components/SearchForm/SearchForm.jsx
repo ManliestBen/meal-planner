@@ -27,7 +27,7 @@ class SearchForm extends React.Component {
           <label htmlFor="search">Recipe Search: </label>
           <input id="search" name="search" type="text" />
   
-          <button>Send data!</button>
+          <button>Search</button>
         </form>
       );
     }
