@@ -38,14 +38,17 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
-  async componentDidMount() {
- 
-    const listRecipes = await getRecipes();
+  async handleRecipeSearch (query) {
+    const listRecipes = await getRecipes(query);
     console.log(listRecipes.hits);
     this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
-    console.log(this.state.apiInfo[0])
-    
   }
+  // async componentDidMount() {
+ 
+  //   const listRecipes = await getRecipes('ravioli chicken');
+  //   console.log(listRecipes.hits);
+  //   this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
+  // }
   
   render() {
     return (
@@ -81,7 +84,10 @@ class App extends Component {
             />
           }/>
           <Route path='/recipesearch' render={() =>
-            <RecipeSearch />
+            <RecipeSearch
+              recipeQuery={this.handleRecipeSearch}
+              apiInfo={this.state.apiInfo}
+              recipeSearch={this.state.recipeSearch} />
           }/>
           <Route path='/weekview' render={() =>
             <WeekView
