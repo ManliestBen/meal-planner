@@ -24,7 +24,10 @@ class App extends Component {
         from: 6,
         to: 52}
     ],
-    apiInfo: [],
+    apiInfo: [
+      { bookmarked: 'taco'
+
+      }],
     user: userService.getUser()
     
   }
@@ -39,14 +42,14 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    this.setState({apiInfo: [{}]})
+ 
     const listRecipes = await getRecipes();
     console.log(listRecipes.hits);
     this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
     console.log(this.state.apiInfo[0])
     
   }
-
+  
   render() {
     return (
       <div className="App">
@@ -87,13 +90,14 @@ class App extends Component {
             <WeekView
               apiInfo={this.state.apiInfo}
               recipeSearch={this.state.recipeSearch}
+              
             />
           }/>
           <Route path='/shoppinglist' render={() =>
             <ShoppingList />
           }/>
         </Switch>
-        
+        <h1></h1>
         
       </div>
   );
