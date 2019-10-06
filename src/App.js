@@ -8,7 +8,7 @@ import DayView from '../src/pages/DayView/DayView';
 import LoginPage from '../src/pages/LoginPage/LoginPage';
 import RecipeSearch from '../src/pages/RecipeSearch/RecipeSearch';
 import ShoppingList from '../src/pages/ShoppingList/ShoppingList';
-import WeekView from '../src/pages/WeekView/WeekView';
+import WeekView from './pages/WeekView/WeekView';
 import SignupPage from './pages/SignupPage/SignupPage';
 import userService from '../src/utils/userService';
 import NavBar from '../src/components/NavBar/NavBar';

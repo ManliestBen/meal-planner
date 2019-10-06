@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRecipes } from '../../services/edamam-api';
-import WeekView from '../WeekView/WeekView';
+import SearchResults from '../SearchResults/SearchResults';
 import { PromiseProvider } from 'mongoose';
 import SearchForm from '../../components/SearchForm/SearchForm';
 
@@ -16,7 +16,7 @@ const RecipeSearch = (props) => {
                 apiInfo={props.apiInfo}
 
             />
-            <WeekView 
+            <SearchResults 
                 apiInfo={props.apiInfo}
             />
         </div>
