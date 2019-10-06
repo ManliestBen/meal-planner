@@ -24,10 +24,7 @@ class App extends Component {
         from: 6,
         to: 52}
     ],
-    apiInfo: [
-      { bookmarked: 'taco'
-
-      }],
+    apiInfo: [],
     user: userService.getUser()
     
   }

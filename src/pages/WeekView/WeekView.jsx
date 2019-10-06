@@ -9,7 +9,7 @@ function WeekView (props) {
         
         <div>Week View
           {props.apiInfo.map((item, idx) =>
-            item.recipe ? 
+     
               <Link 
                 key={idx}
                 to={`/recipe/${idx}`}
@@ -18,8 +18,7 @@ function WeekView (props) {
                   Calories: {item.recipe.calories}
                 </div>
               </Link>
-              :
-              <></>
+           
           )}
         </div>
         

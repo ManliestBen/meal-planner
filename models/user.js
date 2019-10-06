@@ -3,29 +3,14 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-const mealSchema = new mongoose.Schema({
-    mealName: String,
-    recipeUri: String,
-    recipeImage: String,
-    recipeUrl: String,
-    recipeYield: String,
-    recipeIngredients: [String],
-    recipeCalories: Number    
-})
 
 
-const weekSchema = new mongoose.Schema({
-    startDate: Date,
-    dayOfWeek: {type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']},
-    mealType: {type: String, enum: ['Breakfast', 'Lunch', 'Dinner', 'Snack']},
-    meals: [mealSchema]
 
-});
 const userSchema = new mongoose.Schema({
     name: String,
     email: {type: String, required: true, unique: true},
     password: String,
-    week: [weekSchema]
+    
 }, {
     timestamps: true
 });
