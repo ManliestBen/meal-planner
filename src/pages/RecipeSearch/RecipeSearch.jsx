@@ -2,15 +2,20 @@ import React from 'react';
 import { getRecipes } from '../../services/edamam-api';
 import WeekView from '../WeekView/WeekView';
 import { PromiseProvider } from 'mongoose';
+import SearchForm from '../../components/SearchForm/SearchForm';
+
 
 const RecipeSearch = (props) => {
     
     
 
     return (
-        <div>Recipe Search
-            <input name='query' type='text'></input>
-            <button onClick={console.log}  type='submit'>Sumbit</button>
+        <div>
+            <SearchForm 
+                handleSetState={props.handleSetState}
+                apiInfo={props.apiInfo}
+
+            />
             <WeekView 
                 apiInfo={props.apiInfo}
             />
@@ -20,3 +25,5 @@ const RecipeSearch = (props) => {
 
 
 export default RecipeSearch;
+
+

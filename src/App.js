@@ -37,7 +37,9 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
   }
-
+  handleSetState = (fromSearch) => {
+    this.setState({apiInfo: [...fromSearch]})
+  }
   async handleRecipeSearch (query) {
     const listRecipes = await getRecipes(query);
     console.log(listRecipes.hits);
@@ -85,9 +87,10 @@ class App extends Component {
           }/>
           <Route path='/recipesearch' render={() =>
             <RecipeSearch
-              recipeQuery={this.handleRecipeSearch}
+              handleSetState={this.handleSetState}
               apiInfo={this.state.apiInfo}
-              recipeSearch={this.state.recipeSearch} />
+              recipeSearch={this.state.recipeSearch} 
+            />
           }/>
           <Route path='/weekview' render={() =>
             <WeekView
