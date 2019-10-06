@@ -1,0 +1,23 @@
+const WeekView = (props) => {
+    console.log('props' + props.apiInfo[0].bookmarked)
+    return (
+        <div>Week View
+            {props.apiInfo.map((recipe, idx) =>
+                
+                <Link 
+                   key={idx}
+                   to={`/recipe/${idx}`}
+                >   <br></br><br></br>
+                        Recipe: {recipe.bookmarked}<br></br>
+                        Recipe From: {recipe.bookmarked}<br></br>
+                        Recipt To: {recipe.bought}<br></br>
+                        {/* /* Gonna remove later, just using to check DB */} 
+                       
+                    </Link>
+                    )}
+       
+        </div>
+        
+    )
+}
+

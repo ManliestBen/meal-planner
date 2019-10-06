@@ -1,28 +1,34 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { statement } from '@babel/template';
 
 
-const WeekView = (props) => {
+function WeekView (props) {
+    
+    const panda = props.apiInfo;
     return (
+        
         <div>Week View
-            {props.recipeSearch.map((recipe, idx) =>
+            {panda.map((item, idx) =>
+                
                 <Link 
                    key={idx}
                    to={`/recipe/${idx}`}
-                >   <br></br><br></br>
-                        Recipe: {recipe.q}<br></br>
-                        Recipe From: {recipe.from}<br></br>
-                        Recipt To: {recipe.to}<br></br>
+
+                >       
+                        <br></br><br></br>
+                        Recipe: {item.bookmarked}<br></br>
+                        {console.log(item.bookmarked)}
+                        Recipe From: {item.bookmarked}<br></br>
+                        Recipt To: {item.bought}<br></br>
                         {/* /* Gonna remove later, just using to check DB */} 
-                       
+                        
                     </Link>
                     )}
-            {/* {props.recipeSearch[0].q} */}
+       
         </div>
         
     )
-}
-
-
+            }
 
 export default WeekView;

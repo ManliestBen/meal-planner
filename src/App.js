@@ -12,7 +12,7 @@ import WeekView from '../src/pages/WeekView/WeekView';
 import SignupPage from './pages/SignupPage/SignupPage';
 import userService from '../src/utils/userService';
 import NavBar from '../src/components/NavBar/NavBar';
-
+import { getRecipes } from './services/edamam-api';
 
 class App extends Component {
   state = {
@@ -24,6 +24,7 @@ class App extends Component {
         from: 6,
         to: 52}
     ],
+    apiInfo: [],
     user: userService.getUser()
     
   }
@@ -35,6 +36,15 @@ class App extends Component {
 
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()});
+  }
+
+  async componentDidMount() {
+    this.setState({apiInfo: [{}]})
+    const listRecipes = await getRecipes();
+    console.log(listRecipes.hits);
+    this.setState({apiInfo: [...listRecipes.hits]})
+    console.log(this.state.apiInfo[0])
+    
   }
 
   render() {
@@ -75,8 +85,9 @@ class App extends Component {
           }/>
           <Route path='/weekview' render={(props) =>
             <WeekView
-              recipeSearch={this.state.recipeSearch}
-              {...props}
+              apiInfo={this.state.apiInfo}
+              
+              
             />
           }/>
           <Route path='/shoppinglist' render={() =>
