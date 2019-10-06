@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({apiInfo: [{}]})
     const listRecipes = await getRecipes();
     console.log(listRecipes.hits);
-    this.setState({apiInfo: [...listRecipes.hits]})
+    this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
     console.log(this.state.apiInfo[0])
     
   }
@@ -83,11 +83,10 @@ class App extends Component {
           <Route path='/recipesearch' render={() =>
             <RecipeSearch />
           }/>
-          <Route path='/weekview' render={(props) =>
+          <Route path='/weekview' render={() =>
             <WeekView
               apiInfo={this.state.apiInfo}
-              
-              
+              recipeSearch={this.state.recipeSearch}
             />
           }/>
           <Route path='/shoppinglist' render={() =>
