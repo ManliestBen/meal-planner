@@ -3,6 +3,8 @@ const mongoose = require ('mongoose');
 
 
 const mealSchema = new mongoose.Schema({
+    dayOfWeek: {type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']},
+    mealType: {type: String, enum: ['Breakfast', 'Lunch', 'Dinner', 'Snack']},
     mealName: String,
     recipeUri: String,
     recipeImage: String,
@@ -12,12 +14,9 @@ const mealSchema = new mongoose.Schema({
     recipeCalories: Number    
 })
 const weekSchema = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  user: {type: Number, ref: 'User'},
   startDate: Date,
-  dayOfWeek: {type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']},
-  mealType: {type: String, enum: ['Breakfast', 'Lunch', 'Dinner', 'Snack']},
   meals: [mealSchema]
-
 });
 
 

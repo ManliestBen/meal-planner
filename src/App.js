@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
-import * as edamamAPI from '../src/services/edamam-api';
+import * as weekAPI from './services/weeks-api';
 import logo from './logo.svg';
 import './App.css';
 import { read } from 'fs';
@@ -13,6 +13,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import userService from '../src/utils/userService';
 import NavBar from '../src/components/NavBar/NavBar';
 import { getRecipes } from './services/edamam-api';
+import AddWeekPage from '../src/pages/AddWeekPage/AddWeekPage';
 
 class App extends Component {
   state = {
@@ -25,8 +26,16 @@ class App extends Component {
         to: 52}
     ],
     apiInfo: [],
-    user: userService.getUser()
+    user: userService.getUser(),
+    weeks: []
     
+  }
+  
+  handleAddWeek = async newWeekData => {
+    const newWeek = await weekAPI.create(newWeekData);
+    this.setState(state => ({
+      weeks: [...state.weeks, newWeek]
+    }), () => this.props.history.push('/'));
   }
   
   handleLogout = () => {
@@ -96,11 +105,16 @@ class App extends Component {
             <WeekView
               apiInfo={this.state.apiInfo}
               recipeSearch={this.state.recipeSearch}
-              
+              handleAddWeek={this.handleAddWeek}
             />
           }/>
           <Route path='/shoppinglist' render={() =>
             <ShoppingList />
+          }/>
+          <Route path='/addweek' render={() =>
+            <AddWeekPage 
+            handleAddWeek={this.handleAddWeek}
+            />
           }/>
         </Switch>
         <h1></h1>
