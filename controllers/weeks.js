@@ -1,7 +1,8 @@
 const User = require('../models/user');
 
 module.exports = {
-    createWeek
+    createWeek,
+    index
 };
 
 
@@ -17,6 +18,14 @@ async function createWeek(req, res) {
     });
 }
 
+async function index(req, res) {
+    console.log(req.body.user)
+    
+    const user = await User.findById(req.body.user);
+    
+    res.status(200).json(user);
+  }
+  
 
 
 // async function createWeek(req, res) {

@@ -7,3 +7,13 @@ export function create(week) {
         body: JSON.stringify(week)
     }).then(res => res.json());
 }
+
+export async function getWeeks(user) {
+   const variable = await fetch(BASE_URL + '/week', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({user})
+    }) 
+    const newvariable = variable.json();
+    return newvariable
+}

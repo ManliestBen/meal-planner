@@ -101,11 +101,13 @@ class App extends Component {
               recipeSearch={this.state.recipeSearch} 
             />
           }/>
-          <Route path='/weekview' render={() =>
+          <Route path='/weekview' render={({history}) =>
             <WeekView
               apiInfo={this.state.apiInfo}
               recipeSearch={this.state.recipeSearch}
               handleAddWeek={this.handleAddWeek}
+              user={this.state.user}
+              history={history}
             />
           }/>
           <Route path='/shoppinglist' render={() =>
