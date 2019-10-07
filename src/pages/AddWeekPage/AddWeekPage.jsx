@@ -7,22 +7,31 @@ class AddWeekPage extends Component {
         invalidForm: true,
         formData: {
             startDate: new Date().toLocaleString(),
-            user: this.props.user
+            user: this.props.user,
+            newDate: ''
         },
-        startDay: new Date()
+        startDay: {startDay: new Date(),
+        user: this.props.user},
     }
 
     formRef = React.createRef();
 
     handleSubmit = e => {
         e.preventDefault();
+        console.log(this.state.formData)
         this.props.handleAddWeek(this.state.formData)
-        this.props.history.push('/')
+        this.props.history.push('/weekview')
     };
     handleChg = date => {
         this.setState({
             startDay: date
         })
+        this.setState({
+            formData: {startDate : date,
+            user: this.props.user}
+        })
+        
+        
     }
     handleChange = e => {
         const formData = {...this.state.formData, [e.target.name]: e.target.value};
@@ -38,18 +47,22 @@ class AddWeekPage extends Component {
                 <h2>Add Week</h2>
                 <form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <div className='form-group'>
-                        <label>Week Start Date</label>
+                        <label>Select a Week Start Date</label>
+                        <p>{this.state.startday}</p>
                         <DatePicker
-                            selected={this.state.startDay}
+                            selected={this.state.startDay.startDay}
                             onChange={this.handleChg}
+                            
                         />
-                        {/* <input
+                        <input
                             className='form-control'
                             name='startDate'
-                            value={this.state.formData.startDate}
+                            value={this.state.startDay}
                             onChange={this.handleChange}
+                            
                             required
-                        /> */}
+                        />
+                        <p>{this.state.visiDate}</p>
                         <button type='submit'>Submit</button>
                     </div>
                 </form>
