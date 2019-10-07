@@ -17,3 +17,10 @@ export async function getWeeks(user) {
     const newvariable = variable.json();
     return newvariable
 }
+
+export async function deleteWeek(id) {
+    console.log(id)
+    return fetch(`${BASE_URL}/${id}`, {
+        method: 'DELETE'
+    }).then(res => res.json())
+}

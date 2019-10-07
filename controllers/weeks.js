@@ -1,9 +1,26 @@
 const User = require('../models/user');
+const Week = require('../models/user')
 
 module.exports = {
     createWeek,
-    index
+    index,
+    deleteWeek
 };
+
+async function deleteWeek(req, res) {
+    
+    // console.log(req.params.id)
+    User.findOneAndUpdate( {'weeks._id' : `${req.params.id}`} ,
+  {
+    $pull: { weeks: { _id: `${req.params.id}` }}
+  },
+  {new: true},
+  function(err, doc){
+     console.log(err,doc)
+})
+
+    res.status(200);
+}
 
 
 async function createWeek(req, res) {

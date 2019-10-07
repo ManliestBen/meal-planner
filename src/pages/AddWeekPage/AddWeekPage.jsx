@@ -20,7 +20,7 @@ class AddWeekPage extends Component {
         e.preventDefault();
         console.log(this.state.formData)
         this.props.handleAddWeek(this.state.formData)
-        this.props.history.push('/weekview')
+        this.props.history.push('/')
     };
     handleChg = date => {
         this.setState({
@@ -62,7 +62,7 @@ class AddWeekPage extends Component {
                             
                             required
                         />
-                        <p>{this.state.visiDate}</p>
+                        <p></p>
                         <button type='submit'>Submit</button>
                     </div>
                 </form>
