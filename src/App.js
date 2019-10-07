@@ -111,9 +111,11 @@ class App extends Component {
           <Route path='/shoppinglist' render={() =>
             <ShoppingList />
           }/>
-          <Route path='/addweek' render={() =>
+          <Route path='/addweek' render={({history}) =>
             <AddWeekPage 
             handleAddWeek={this.handleAddWeek}
+            user={this.state.user}
+            history={history}
             />
           }/>
         </Switch>

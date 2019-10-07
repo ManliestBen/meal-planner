@@ -6,7 +6,8 @@ class AddWeekPage extends Component {
     state = {
         invalidForm: true,
         formData: {
-            startDate: new Date().toLocaleString()
+            startDate: new Date().toLocaleString(),
+            user: this.props.user
         },
         startDay: new Date()
     }
@@ -15,7 +16,8 @@ class AddWeekPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddWeek(this.state.formData);
+        this.props.handleAddWeek(this.state.formData)
+        this.props.history.push('/')
     };
     handleChg = date => {
         this.setState({
