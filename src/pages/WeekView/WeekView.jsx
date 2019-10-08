@@ -39,7 +39,8 @@ class WeekView extends Component {
         )}
         </div>
         
-        <div></div>
+        <Link to='/addweek' className='link'>Add Week</Link>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </>
         )
 

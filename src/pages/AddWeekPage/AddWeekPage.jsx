@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 class AddWeekPage extends Component {
     state = {
         invalidForm: true,
         formData: {
-            startDate: new Date().toLocaleString(),
+            startDate: new Date().toLocaleDateString('en-US', options),
             user: this.props.user,
             newDate: ''
         },
@@ -23,11 +23,12 @@ class AddWeekPage extends Component {
         this.props.history.push('/')
     };
     handleChg = date => {
+        
         this.setState({
-            startDay: date
+            startDay: date.toLocaleDateString('en-US', options)
         })
         this.setState({
-            formData: {startDate : date,
+            formData: {startDate : date.toLocaleDateString('en-US', options),
             user: this.props.user}
         })
         

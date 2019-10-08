@@ -17,14 +17,7 @@ import AddWeekPage from '../src/pages/AddWeekPage/AddWeekPage';
 
 class App extends Component {
   state = {
-    recipeSearch: [
-      { q: 'Taco',
-        from: 0,
-        to: 10},
-      { q: 'Booze',
-        from: 6,
-        to: 52}
-    ],
+    
     apiInfo: [],
     user: userService.getUser(),
     weeks: []
@@ -98,13 +91,12 @@ class App extends Component {
             <RecipeSearch
               handleSetState={this.handleSetState}
               apiInfo={this.state.apiInfo}
-              recipeSearch={this.state.recipeSearch} 
+              
             />
           }/>
           <Route path='/weekview' render={({history}) =>
             <WeekView
               apiInfo={this.state.apiInfo}
-              recipeSearch={this.state.recipeSearch}
               handleAddWeek={this.handleAddWeek}
               user={this.state.user}
               history={history}

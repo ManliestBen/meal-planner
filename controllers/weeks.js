@@ -9,7 +9,7 @@ module.exports = {
 
 async function deleteWeek(req, res) {
     
-    // console.log(req.params.id)
+    
     User.findOneAndUpdate( {'weeks._id' : `${req.params.id}`} ,
   {
     $pull: { weeks: { _id: `${req.params.id}` }}
@@ -17,7 +17,7 @@ async function deleteWeek(req, res) {
   {new: true},
   function(err, doc){
      console.log(err,doc)
-})
+    })
 
     res.status(200);
 }
