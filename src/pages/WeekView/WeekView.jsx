@@ -39,9 +39,7 @@ class WeekView extends Component {
             <div>{week.startDate}
             <button onClick={() => this.handleDeleteWeek(week._id)}>X</button>
             
-            <DropdownDoW 
-            handleSelectedDay={this.handleSelectedDay}
-            />
+            
             </div>
             
         )}

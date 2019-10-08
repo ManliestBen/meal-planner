@@ -4,11 +4,9 @@ import { Container, Header, List } from 'semantic-ui-react';
 
 import DropdownDoW from '../../components/Dropdown/Dropdown';
 
-const DayView = ({ children }) => (
-<Container style={{ margin: 20 }}>
-<DropdownDoW />
-{children}
-</Container>
+const DayView = () => (
+<>
+</>
 );
 
 
