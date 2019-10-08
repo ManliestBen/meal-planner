@@ -23,7 +23,7 @@ function SearchResults (props) {
              Total Time: {item.recipe.totalTime} minutes<br></br>
              Yield: {Math.round(item.recipe.yield)} Servings <br></br>
              Calories: {Math.round((item.recipe.calories/item.recipe.yield))}<br></br>
-
+              {console.log(item.recipe)}
             </div>
           )}
         </div>

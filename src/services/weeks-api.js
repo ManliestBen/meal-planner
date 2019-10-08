@@ -21,6 +21,8 @@ export async function getWeeks(user) {
 export async function deleteWeek(id) {
     console.log(id)
     return fetch(`${BASE_URL}/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({id})
     }).then(res => res.json())
 }

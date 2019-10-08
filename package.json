@@ -20,6 +20,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "request": "^2.88.0",
+    "semantic-ui-react": "^0.88.1",
     "serve-favicon": "^2.5.0"
   },
   "scripts": {
