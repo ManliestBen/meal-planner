@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import * as weekAPI from '../../services/weeks-api';
 import userService from '../../utils/userService';
 import DropdownWeek from '../../components/DropdownWeek/DropdownWeek';
+import DayView from '../DayView/DayView';
+
 
 
 class WeekView extends Component {
@@ -34,18 +36,25 @@ class WeekView extends Component {
     
         return (
         <>
-        <div>{this.state.weeks.map((week, idx) =>
-            
-            <div>{week.startDate}
-            <button onClick={() => this.handleDeleteWeek(week._id)}>X</button>
-            
-            </div>
-            
-        )}
+        <Router>
+        <div>
+            <Route exact path='/weekview'>
+            {this.state.weeks.map((week, idx) =>
+                <div>
+                    <Link to={`/dayview/${idx}`}>{week.startDate}</Link>
+                    <button onClick={() => this.handleDeleteWeek(week._id)}>X</button>
+                </div>
+            )}
+            <Link to='/addweek' className='link'>Add Week</Link>
+            </Route>
         </div>
-        
-        <Link to='/addweek' className='link'>Add Week</Link>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Route path='/dayview/:idx' render={(props) =>
+                <DayView 
+                    props={props}
+                    state={this.state}
+                />
+            }/>
+      </Router>
         </>
         )
 

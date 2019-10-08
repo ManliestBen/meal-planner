@@ -4,10 +4,19 @@ import { Container, Header, List } from 'semantic-ui-react';
 
 import DropdownDoW from '../../components/Dropdown/Dropdown';
 
-const DayView = () => (
+const DayView = ({state, props}) => {
+
+const holder = state;
+const holder2 = props;
+
+return(
 <>
+    <div>
+        {console.log(holder.weeks[holder2.match.params.idx].meals)}
+        {console.log(holder2.match.params.idx)}
+    </div>
 </>
-);
+)}
 
 
 const styleLink = document.createElement("link");
