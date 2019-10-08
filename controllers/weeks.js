@@ -10,7 +10,7 @@ module.exports = {
 async function deleteWeek(req, res) {
     
     
-    User.findOneAndUpdate( {'weeks._id' : `${req.params.id}`} ,
+    const remove = await User.findOneAndUpdate( {'weeks._id' : `${req.params.id}`} ,
   {
     $pull: { weeks: { _id: `${req.params.id}` }}
   },
@@ -19,18 +19,18 @@ async function deleteWeek(req, res) {
      console.log(err,doc)
     })
 
-    res.status(200);
+    res.status(200).json(remove);
 }
 
 
 async function createWeek(req, res) {
     console.log(req.body)
     // User.findOne({email: req.body.email})
-    User.findById(req.body.user._id, function(err, user) {
+    const create = await User.findById(req.body.user._id, function(err, user) {
         console.log(req.body);
         user.weeks.push(req.body);
         user.save(function(err) {
-            res.status(201);
+            res.status(201).json(create);
         });
     });
 }

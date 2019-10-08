@@ -16,11 +16,11 @@ class AddWeekPage extends Component {
 
     formRef = React.createRef();
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
         console.log(this.state.formData)
-        this.props.handleAddWeek(this.state.formData)
-        this.props.history.push('/')
+        await this.props.handleAddWeek(this.state.formData)
+        this.props.history.push('/weekview')
     };
     handleChg = date => {
         
