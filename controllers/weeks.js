@@ -22,6 +22,7 @@ async function deleteWeek(req, res) {
 
 async function createWeek(req, res) {
     const create = await User.findById(req.body.user._id, function(err, user) {
+        console.log(req.body)
         user.weeks.push(req.body);
         user.save(function(err) {
         res.status(201).json(create);

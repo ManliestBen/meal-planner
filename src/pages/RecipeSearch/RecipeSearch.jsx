@@ -18,6 +18,7 @@ const RecipeSearch = (props) => {
             />
             <SearchResults 
                 apiInfo={props.apiInfo}
+                user={props.user}
             />
         </div>
     )

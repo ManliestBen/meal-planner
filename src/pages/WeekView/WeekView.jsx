@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as weekAPI from '../../services/weeks-api';
 import userService from '../../utils/userService';
-import DropdownDoW from '../../components/Dropdown/Dropdown';
+import DropdownWeek from '../../components/DropdownWeek/DropdownWeek';
 
 
 class WeekView extends Component {
@@ -38,7 +38,6 @@ class WeekView extends Component {
             
             <div>{week.startDate}
             <button onClick={() => this.handleDeleteWeek(week._id)}>X</button>
-            
             
             </div>
             

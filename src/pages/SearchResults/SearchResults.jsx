@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { statement } from '@babel/template';
 import DropdownDoW from '../../components/Dropdown/Dropdown';
-
+import * as weekAPI from '../../services/weeks-api';
+import DropdownWeek from '../../components/DropdownWeek/DropdownWeek';
 
 class SearchResults extends Component {
   state = {
-    selectedDay: ''
+    selectedDay: '',
+    selectedWeek: '',
+    weeks: []
+  }
+  async componentDidMount(){
+    const user = await weekAPI.getWeeks(this.props.user._id);
+    console.log(user.weeks)
+    this.setState({weeks: user.weeks})
+    
   }
   handleSelectedDay = async day => {
     await this.setState({selectedDay: day})
     console.log(this.state.selectedDay)
-}
+  }
+  handleSelectedWeek = async week => {
+    await this.setState({selectedWeek: week})
+    console.log(this.state.selectedWeek)
+  }
     render () {
     return (
         
@@ -34,6 +47,10 @@ class SearchResults extends Component {
               
               <DropdownDoW 
             handleSelectedDay={this.handleSelectedDay}
+            />
+              <DropdownWeek
+            weeks={this.state.weeks}
+            handleSelectedWeek={this.handleSelectedWeek}
             />
             </div>
           )}

@@ -91,6 +91,7 @@ class App extends Component {
             <RecipeSearch
               handleSetState={this.handleSetState}
               apiInfo={this.state.apiInfo}
+              user={this.state.user}
               
             />
           }/>
@@ -100,6 +101,7 @@ class App extends Component {
               handleAddWeek={this.handleAddWeek}
               user={this.state.user}
               history={history}
+              weeks={this.state.weeks}
             />
           }/>
           <Route path='/shoppinglist' render={() =>
