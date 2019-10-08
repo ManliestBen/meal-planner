@@ -10,7 +10,7 @@ const DropdownWeek = (props) => {
         weekOptions.push({
             key: props.weeks[i]._id,
             text: props.weeks[i].startDate,
-            value: props.weeks[i].startDate
+            value: props.weeks[i]._id
         })
     }
     const handleOnChange = (e,data) => {

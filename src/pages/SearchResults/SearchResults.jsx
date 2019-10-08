@@ -45,13 +45,14 @@ class SearchResults extends Component {
              Yield: {Math.round(item.recipe.yield)} Servings <br></br>
              Calories: {Math.round((item.recipe.calories/item.recipe.yield))}<br></br>
               
-              <DropdownDoW 
-            handleSelectedDay={this.handleSelectedDay}
-            />
-              <DropdownWeek
+             <DropdownWeek
             weeks={this.state.weeks}
             handleSelectedWeek={this.handleSelectedWeek}
             />
+              <DropdownDoW 
+            handleSelectedDay={this.handleSelectedDay}
+            />
+              
             </div>
           )}
         </div>
