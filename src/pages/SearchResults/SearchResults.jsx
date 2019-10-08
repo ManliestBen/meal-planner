@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { statement } from '@babel/template';
+import DropdownDoW from '../../components/Dropdown/Dropdown';
 
 
-function SearchResults (props) {
-  
+class SearchResults extends Component {
+  state = {
+    selectedDay: ''
+  }
+  handleSelectedDay = async day => {
+    await this.setState({selectedDay: day})
+    console.log(this.state.selectedDay)
+}
+    render () {
     return (
         
         <div>
-          {props.apiInfo.map((item, idx) =>
+          {this.props.apiInfo.map((item, idx) =>
             <div>
                 <br></br><br></br>
                 <img src={item.recipe.image}></img><br></br>
@@ -23,13 +31,16 @@ function SearchResults (props) {
              Total Time: {item.recipe.totalTime} minutes<br></br>
              Yield: {Math.round(item.recipe.yield)} Servings <br></br>
              Calories: {Math.round((item.recipe.calories/item.recipe.yield))}<br></br>
-              {console.log(item.recipe)}
+              
+              <DropdownDoW 
+            handleSelectedDay={this.handleSelectedDay}
+            />
             </div>
           )}
         </div>
         
     );
-}
+}}
             
 
 export default SearchResults;
