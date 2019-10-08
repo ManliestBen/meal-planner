@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as weekAPI from '../../services/weeks-api';
 import userService from '../../utils/userService';
-
+import DropdownDoW from '../../components/Dropdown/Dropdown';
 
 
 class WeekView extends Component {
     state = {
         weeks: [],
-        user: this.props.user
+        user: this.props.user,
+        selectedDay: ''
     };
     
     async componentDidMount(){
@@ -24,7 +25,10 @@ class WeekView extends Component {
         const user = await weekAPI.getWeeks(this.state.user._id);
         this.setState({weeks: user.weeks})
     }
-
+    handleSelectedDay = async day => {
+        await this.setState({selectedDay: day})
+        console.log(this.state.selectedDay)
+    }
     render() {
         const show = this.state.weeks.length != 0 ? <div>{this.state.weeks[0]._id}</div> : 'loading'
     
@@ -32,9 +36,13 @@ class WeekView extends Component {
         <>
         <div>{this.state.weeks.map((week, idx) =>
             
-            <p>{week.startDate}
+            <div>{week.startDate}
             <button onClick={() => this.handleDeleteWeek(week._id)}>X</button>
-            </p>
+            
+            <DropdownDoW 
+            handleSelectedDay={this.handleSelectedDay}
+            />
+            </div>
             
         )}
         </div>

@@ -39,13 +39,19 @@ const daysOfWeek = [
     },
 ]
 
-const DropdownDoW = () => (
+const DropdownDoW = (props) => {
+    const handleOnChange = (e,data) => {
+        props.handleSelectedDay(data.value)
+    }
+    return (
     <Dropdown
     placeholder='Select Day'
     fluid
     selection
     options={daysOfWeek}
+    onChange={handleOnChange}
     />
+    
 )
-
+}
 export default DropdownDoW
