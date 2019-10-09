@@ -26,3 +26,7 @@ export async function deleteWeek(id) {
         body: JSON.stringify({id})
     }).then(res => res.json())
 }
+
+export async function createMeal(meal) {
+    
+}
