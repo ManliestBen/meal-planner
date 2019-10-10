@@ -18,6 +18,7 @@ class SearchResults extends Component {
     selectedWeek: '',
     weeks: [],
     meals: []
+    
   }
   async componentDidMount(){
     const user = await weekAPI.getWeeks(this.props.user._id);
@@ -27,10 +28,12 @@ class SearchResults extends Component {
   }
   handleAddMeal = async newMealData => {
     console.log(newMealData)
-    const newmeal = await weekAPI.createMeal(newMealData);
-    this.setState(state => ({
-      meals: [...state.meals, newmeal]
-    }), () => this.props.history.push('/'));
+    const id = this.state.selectedWeek
+    const userid = this.props.user._id
+    const newmeal = await weekAPI.createMeal(newMealData, id, userid);
+    this.props.history.push('/');
+    console.log('userid')
+    console.log(this.props.user._id)
   }
   handleSelectedDay = async day => {
     await this.setState({selectedDay: day})

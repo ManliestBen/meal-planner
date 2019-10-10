@@ -19,6 +19,7 @@ const RecipeSearch = (props) => {
             <SearchResults 
                 apiInfo={props.apiInfo}
                 user={props.user}
+                history={props.history}
             />
         </div>
     )

@@ -87,11 +87,12 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route path='/recipesearch' render={() =>
+          <Route path='/recipesearch' render={({history}) =>
             <RecipeSearch
               handleSetState={this.handleSetState}
               apiInfo={this.state.apiInfo}
               user={this.state.user}
+              history={history}
               
             />
           }/>

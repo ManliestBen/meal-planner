@@ -27,6 +27,14 @@ export async function deleteWeek(id) {
     }).then(res => res.json())
 }
 
-export async function createMeal(meal) {
+export async function createMeal(meal, id, userid) {
+    const mealData = meal;
+    const weekId = id;
+    const userId = userid;
     
+    return fetch(`${BASE_URL}/${userId}/${weekId}`, {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(mealData)
+    }).then(res => res.json());
 }
