@@ -13,7 +13,8 @@ const mealSchema = new mongoose.Schema({
   recipeUrl: String,
   recipeYield: String,
   recipeIngredients: [String],
-  recipeCalories: Number    
+  recipeCalories: Number,
+  recipeTime: Number    
 })
 const weekSchema = new mongoose.Schema({
   startDate: Date,

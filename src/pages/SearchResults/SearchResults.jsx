@@ -27,10 +27,10 @@ class SearchResults extends Component {
   }
   handleAddMeal = async newMealData => {
     console.log(newMealData)
-    // const newmeal = await weekAPI.createMeal(newMealData);
-    // this.setState(state => ({
-    //   meals: [...state.meals, newmeal]
-    // }), () => this.props.history.push('/'));
+    const newmeal = await weekAPI.createMeal(newMealData);
+    this.setState(state => ({
+      meals: [...state.meals, newmeal]
+    }), () => this.props.history.push('/'));
   }
   handleSelectedDay = async day => {
     await this.setState({selectedDay: day})
@@ -41,10 +41,22 @@ class SearchResults extends Component {
     console.log(this.state.selectedWeek)
   }
   handleSubmit(event) {
-    
     event.preventDefault();
-    const data = new FormData(event.target.value);
-    console.log(this.formData.current.recipename.value)
+    
+    const index = event.target.value;
+    
+    const data = {
+      dayOfWeek: this.state.selectedDay,
+      mealName: this.props.apiInfo[index].recipe.label,
+      recipeUri: this.props.apiInfo[index].recipe.uri,
+      recipeImage: this.props.apiInfo[index].recipe.image,
+      recipeUrl: this.props.apiInfo[index].recipe.url,
+      recipeYield: this.props.apiInfo[index].recipe.yield,
+      recipeIngredients: this.props.apiInfo[index].recipe.ingredientList,
+      recipeCalories: this.props.apiInfo[index].recipe.calories,
+      recipeTime: this.props.apiInfo[index].recipe.totalTime
+    }
+    
     this.handleAddMeal(data)
   }
     render () {
@@ -74,22 +86,7 @@ class SearchResults extends Component {
               <DropdownDoW 
             handleSelectedDay={this.handleSelectedDay}
             />
-              <form ref={this.formData} onSubmit={this.handleSubmit}>
-                <label htmlFor='recipename'/>
-                <input id='recipename' name='recipename' type='text' value={item.recipe.label}/>
-                <label htmlFor='selectedweek'/>
-                <input id='selectedweek' name='selectedweek' type='hidden' value={item.recipe.label}/>
-                <label htmlFor='selectedday'/>
-                <input id='selectedday' name='selectedday' type='hidden' value={item.recipe.label}/>
-                <label htmlFor='mealcalories'/>
-                <input id='mealcalories' name='mealcalories' type='hidden' value={item.recipe.label}/>
-                <label htmlFor='mealtime'/>
-                <input id='mealtime' name='mealtime' type='hidden' value={item.recipe.label}/>
-                <label htmlFor='mealyield'/>
-                <input id='mealyield' name='mealyield' type='hidden' value={item.recipe.label}/>
-                
-                <button>Add Meal</button>  
-              </form>
+            <button onClick={this.handleSubmit} value={idx}>Button</button>
             </div>
           )}
         </div>
