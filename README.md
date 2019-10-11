@@ -6,7 +6,7 @@
 ## 
 ## 
 ## 
-## The app can be found [here](https://deployedproject.com)
+## The app can be found [here](https://manliest-meal-planner.herokuapp.com/)
 ## 
 ## 
 ## Motivation:
