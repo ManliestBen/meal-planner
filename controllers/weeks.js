@@ -4,7 +4,8 @@ const Week = require('../models/user')
 module.exports = {
     createWeek,
     index,
-    deleteWeek
+    deleteWeek,
+    addMeal
 };
 
 async function deleteWeek(req, res) {
@@ -36,4 +37,13 @@ async function index(req, res) {
   }
   
 
-
+async function addMeal(req, res) {
+  var userId = req.params.id
+  var weekId = req.params.id2
+  const mealAdd = await User.findOneAndUpdate({_id:userId, 'weeks._id':weekId}, {$push :
+    {'meals' : req.body}
+  }, {upsert: true}, function(err, docs){
+    res.json(docs);
+    console.log(docs);
+  })
+}
