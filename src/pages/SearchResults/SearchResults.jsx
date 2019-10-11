@@ -89,7 +89,7 @@ class SearchResults extends Component {
               <DropdownDoW 
             handleSelectedDay={this.handleSelectedDay}
             />
-            <button onClick={this.handleSubmit} value={idx}>Button</button>
+            <button onClick={this.handleSubmit} value={idx}>Add Meal</button>
             </div>
           )}
         </div>
