@@ -42,11 +42,11 @@ class App extends Component {
   handleSetState = (fromSearch) => {
     this.setState({apiInfo: [...fromSearch]})
   }
-  async handleRecipeSearch (query) {
-    const listRecipes = await getRecipes(query);
-    console.log(listRecipes.hits);
-    this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
-  }
+  // async handleRecipeSearch (query) {
+  //   const listRecipes = await getRecipes(query);
+  //   console.log(listRecipes.hits);
+  //   this.setState({apiInfo: [...listRecipes.hits]}, () => console.log('done'))
+  // }
   // async componentDidMount() {
  
   //   const listRecipes = await getRecipes('ravioli chicken');
